@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import React from 'react'
+import Link from 'next/link'
 import { Button } from "@/components/ui/button"
 
 
@@ -10,7 +11,10 @@ const Header = () => {
         <Image src={'/logo.svg'} alt='logo' width={40} height={40}  />
         <h1 className="text-base font-bold md:text-2xl">Mockly</h1>
       </div>
-      <Button >Get Started</Button>
+        <Link href={'/dashboard'}>
+
+      <Button size={'lg'}>Get Started</Button>
+      </Link>
     </nav>
   )
 }
