@@ -1,11 +1,12 @@
 import {Button} from "@/components/ui/button";
 import Image from "next/image";
+import Header from "./_components/Header";
 
 export default function Home() {
   return (
     <div>
-      hello my name is shafeeq hussain
-      <Button>click me</Button>
+     {/*Header8?*/}
+     <Header />
     </div>
   );
 }
