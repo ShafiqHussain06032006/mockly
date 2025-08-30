@@ -15,7 +15,7 @@ const MenuOption =[
     },
     {
         name:'How it works',
-        path:'/how-it-works'
+        path:'/how-it-works?'
     }
 ]
 
