@@ -1,7 +1,7 @@
 "use client"
 import { useUser } from '@clerk/nextjs'
 import React , {useState} from 'react'
-import { Button } from '@/components/ui/button'
+import CreateInterviewDialog from '../_components/CreateInterviewDialog'
 import EmptyState from './EmptyState'
 
 
@@ -19,7 +19,7 @@ const Dashboard = () => {
           <h2 className='text-lg text-gray-500'>My Dashboard</h2>
           <h2 className='text-3xl font-bold '>Welcome,{user?.fullName} </h2>
            </div>
-           <Button size={'lg'}>+Create Interview</Button>
+           <CreateInterviewDialog/>
            </div>
            {InterviewList.length === 0 && (
             <EmptyState />
