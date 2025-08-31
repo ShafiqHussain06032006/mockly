@@ -5,11 +5,15 @@ import {
   Dialog,
   DialogContent,
   DialogDescription,
+  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import ResumeUpload from './ResumeUpload'
+import JobDescription from './JobDescription'
+import { DialogClose } from '@radix-ui/react-dialog'
 
 
 function CreateInterviewDialog() {
@@ -18,23 +22,30 @@ function CreateInterviewDialog() {
   <DialogTrigger>
     <Button>Create Interview </Button>
   </DialogTrigger>
-  <DialogContent>
+  <DialogContent className='min-w-3xl'>
     <DialogHeader>
       <DialogTitle>Please submit following details.</DialogTitle>
       <DialogDescription>
        
-        <Tabs defaultValue="resume-upload" className="w-[400px]">
+        <Tabs defaultValue="resume-upload" className="w-full mt-5">
   <TabsList>
     <TabsTrigger value="resume-upload">Resume upload</TabsTrigger>
     <TabsTrigger value="job-description">Job Description</TabsTrigger>
   </TabsList>
-  <TabsContent value="resume-upload">Make changes to your account here.</TabsContent>
-  <TabsContent value="job-description">Change your password here.</TabsContent>
+  <TabsContent value="resume-upload"><ResumeUpload/></TabsContent>
+  <TabsContent value="job-description"><JobDescription/></TabsContent>
 </Tabs>
 
 
       </DialogDescription>
     </DialogHeader>
+    
+    <DialogFooter className='flex gap-6'>
+     <DialogClose>
+        <Button variant={'ghost'}>Cancel</Button>
+     </DialogClose>
+     <Button>Submit</Button>
+    </DialogFooter>
   </DialogContent>
 </Dialog>
   )
