@@ -9,6 +9,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 
 function CreateInterviewDialog() {
@@ -19,10 +20,19 @@ function CreateInterviewDialog() {
   </DialogTrigger>
   <DialogContent>
     <DialogHeader>
-      <DialogTitle>Are you absolutely sure?</DialogTitle>
+      <DialogTitle>Please submit following details.</DialogTitle>
       <DialogDescription>
-        This action cannot be undone. This will permanently delete your account
-        and remove your data from our servers.
+       
+        <Tabs defaultValue="resume-upload" className="w-[400px]">
+  <TabsList>
+    <TabsTrigger value="resume-upload">Resume upload</TabsTrigger>
+    <TabsTrigger value="job-description">Job Description</TabsTrigger>
+  </TabsList>
+  <TabsContent value="resume-upload">Make changes to your account here.</TabsContent>
+  <TabsContent value="job-description">Change your password here.</TabsContent>
+</Tabs>
+
+
       </DialogDescription>
     </DialogHeader>
   </DialogContent>
