@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from '@/components/ui/button'
 
 import {
@@ -17,6 +17,17 @@ import { DialogClose } from '@radix-ui/react-dialog'
 
 
 function CreateInterviewDialog() {
+
+    const [formData ,setFormData] = useState<any>();
+
+   const onHandleInputChange =(field:string,value:string)=>{
+        setFormData=>((prev : any)=>({
+            ...prev,
+            [field]:value
+        }))
+   }
+
+
   return (
     <Dialog>
   <DialogTrigger>
