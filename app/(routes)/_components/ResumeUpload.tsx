@@ -6,8 +6,8 @@ const ResumeUpload = ({setFiles} : any) => {
 
   // const [files, setFiles] = useState<File[]>([]);
   const handleFileUpload = (files: File[]) => {
-    setFiles(files);
-    console.log(files);
+    setFiles(files[0]);
+    
   };
 
 
