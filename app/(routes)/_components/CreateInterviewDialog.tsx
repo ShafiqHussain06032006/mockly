@@ -14,19 +14,41 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import ResumeUpload from './ResumeUpload'
 import JobDescription from './JobDescription'
 import { DialogClose } from '@radix-ui/react-dialog'
+import axios from 'axios'
 
 
 function CreateInterviewDialog() {
 
     const [formData ,setFormData] = useState<any>();
+    const [file, setFile] = useState<File | null>();
+    const [loading, setLoading] = useState(false);
 
    const onHandleInputChange =(field:string,value:string)=>{
         setFormData=>((prev : any)=>({
             ...prev,
-            [field]:value
+            [field]: value
         }))
    }
+    
 
+   const onSubmit = async ()=>{
+        
+        if(!file) return;
+        setLoading(true);
+       const formData = new FormData();
+        formData.append('file',file);
+
+        try{
+               const res = await axios.post('api/generate-interview-questions',formData)
+                console.log(res.data);
+        }catch(e){
+            console.log(e);
+        }finally{
+            setLoading(false);
+        }
+      
+
+   }
 
   return (
     <Dialog>
@@ -43,7 +65,7 @@ function CreateInterviewDialog() {
     <TabsTrigger value="resume-upload">Resume upload</TabsTrigger>
     <TabsTrigger value="job-description">Job Description</TabsTrigger>
   </TabsList>
-  <TabsContent value="resume-upload"><ResumeUpload/></TabsContent>
+  <TabsContent value="resume-upload"><ResumeUpload setFiles = {(file:File) => setFile(file)} /></TabsContent>
   <TabsContent value="job-description"><JobDescription/></TabsContent>
 </Tabs>
 
@@ -55,7 +77,7 @@ function CreateInterviewDialog() {
      <DialogClose>
         <Button variant={'ghost'}>Cancel</Button>
      </DialogClose>
-     <Button>Submit</Button>
+     <Button onClick={onSubmit} disabled = {loading || !file } >Submit</Button>
     </DialogFooter>
   </DialogContent>
 </Dialog>
